@@ -23,7 +23,7 @@ int main(int args, char* argv[])
 
 	ifstream file("3d_models/saya");
 
-	Vector vecC
+	Vector vecC;
 	Point pointC;
 	Triangle trgC;
 
