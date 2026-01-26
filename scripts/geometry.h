@@ -22,7 +22,7 @@ struct Triangle
 	float x3,y3,z3;
 };
 
-struct Cercle
+struct Circle
 {
 	float x,y;
 	float r;
