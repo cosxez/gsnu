@@ -51,7 +51,7 @@ void vector3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float
 {
 	int w,h;
 
-	if (z1==0){z1=1;}
+	if (z1 == 0) { z1 = 1; }
 	if (z2==0){z2=1;}
 	if (x1==0){x1=1;}
 	if (x2==0){x2=1;}
