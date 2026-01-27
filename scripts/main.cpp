@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 #include <cmath>
-#include <string>
 #include "geometry.h"
 #include "menu.h"
 #include "render_models.h"
@@ -46,7 +45,7 @@ int main(int args, char* argv[])
 		
 		if (scene == 0x00)
 		{
-			render3(win,ren,saya,0x01,135,400,0,1);
+			render3(win,ren,saya,0x01,135,width/2+(width/100*20), 0, 1.3);
 		}
 		
 		SDL_RenderPresent(ren);
