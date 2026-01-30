@@ -53,25 +53,25 @@ int main(int args, char* argv[])
 			dy -= 7;
 			if (dy <= -height / 2) { dx = width / 2; dy = height; }
 			
+			//house and saya
+			render3(win,ren,menu,Color{160,150,150},0x01,125,width/2+(width/100*20),0,1);
+
 			//animated sakura leafs
 			{
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 10 + dy, dx * 17, dy * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dy, dx * 17 - 140 * 17, dy * 17 + 400 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dy, dx * 17 - 90 * 17, dy * 17 + 400 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 10 * 17, dy * 17 - 150 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dy, dx * 17 - 310 * 17, dy * 17 + 350 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 400 * 17, dy * 17 - 230 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dx, dx * 17 - 670 * 17, dy * 17 + 690 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dy, dx * 17 - 540 * 17, dy * 17 - 110 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dy, dx * 17 - 140 * 17, dy * 17 + 200 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dy, dx * 17 - 260 * 17, dy * 17 + 350 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 350 * 17, dy * 17 - 230 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dx, dx * 17 - 620 * 17, dy * 17 + 690 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dy, dx * 17 - 490 * 17, dy * 17 - 110 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dy, dx * 17 - 90 * 17, dy * 17 + 200 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 10 * 17, dy * 17 - 550 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dy, dx * 17 - 310 * 17, dy * 17 + 250 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 400 * 17, dy * 17 - 730 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dx, dx * 17 - 670 * 17, dy * 17 + 90 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 50 + dy, dx * 17 - 540 * 17, dy * 17 - 410 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dy, dx * 17 - 260 * 17, dy * 17 + 250 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 350 * 17, dy * 17 - 730 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dx, dx * 17 - 620 * 17, dy * 17 + 90 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 50 + dy, dx * 17 - 490 * 17, dy * 17 - 410 * 17, 17);
 			}
-
-			//house and saya
-			render3(win, ren, menu, Color{160,150,150},0x01,125,width/2+((width/100)*20),0,1);
 		}
 
 		SDL_RenderPresent(ren);
