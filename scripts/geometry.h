@@ -44,7 +44,9 @@ void point3(SDL_Window* window, SDL_Renderer* render, float x, float y, float z)
 	if (z == 0) { z = 1; }
 
 	SDL_GetWindowSize(window, &w, &h);
+	
 	SDL_RenderDrawPoint(render, w / 2 + (x / z), h / 2 - (y / z));
+	
 }
 
 void vector3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float z1, float x2, float y2, float z2)
@@ -60,6 +62,7 @@ void vector3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float
 	SDL_GetWindowSize(window, &w, &h);
 
 	SDL_RenderDrawLine(render, w / 2 + (x1 / z1), h / 2 - (y1 / z1), w / 2 + (x2 / z2), h / 2 - (y2 / z2));
+	
 }
 
 void triangle3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3)

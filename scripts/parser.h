@@ -1,7 +1,7 @@
 void ReadToModel(string path, Model& model, const char* name)
 {
 	ifstream file(path);
-	if (!file.is_open()) { cout << "File was not opened"; }
+	if (!file.is_open()) { cout << "File was not opened\n"; }
 
 	model.name = name;
 	Vector vecC;

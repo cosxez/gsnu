@@ -21,11 +21,11 @@ int main(int args, char* argv[])
 	bool run = true;
 	SDL_Event event;
 
-	Model saya;
+	Model menu;
 	Model sakura_leaf;
 
 	ReadToModel("3d_models/sakura_leaf",sakura_leaf,"sakura_leaf");
-	ReadToModel("3d_models/saya", saya, "saya");
+	ReadToModel("3d_models/menu", menu, "menu");
 
 	unsigned char scene = 0x00;
 	int width, height;
@@ -52,13 +52,7 @@ int main(int args, char* argv[])
 			dx -= 2;
 			dy -= 7;
 			if (dy <= -height / 2) { dx = width / 2; dy = height; }
-			//wall
-			triangle3(win, ren, width / 2 - 10, 200, 0, width / 2 - 10, -200, 0, 150, -200, 2);
-			triangle3(win, ren, width / 2 - 10, 200, 0, 150, -200, 2, 150, 200, 2);
-
-			//saya
-			render3(win, ren, saya, Color{ 200,200,200 }, 0x01, 125, width / 2 + (width / 100 * 20), 0, 1.3);
-
+			
 			//animated sakura leafs
 			{
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 10 + dy, dx * 17, dy * 17, 17);
@@ -75,6 +69,9 @@ int main(int args, char* argv[])
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dx, dx * 17 - 670 * 17, dy * 17 + 90 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 50 + dy, dx * 17 - 540 * 17, dy * 17 - 410 * 17, 17);
 			}
+
+			//house and saya
+			render3(win, ren, menu, Color{160,150,150},0x01,125,width/2+((width/100)*20),0,1);
 		}
 
 		SDL_RenderPresent(ren);
