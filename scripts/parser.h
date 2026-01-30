@@ -1,4 +1,4 @@
-void ReadToModel(string path,Model &model,const char* name)
+void ReadToModel(string path, Model& model, const char* name)
 {
 	ifstream file(path);
 	if (!file.is_open()) { cout << "File was not opened"; }

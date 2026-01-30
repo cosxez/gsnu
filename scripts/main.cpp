@@ -5,7 +5,6 @@
 #include <string>
 #include <cmath>
 #include "geometry.h"
-#include "menu.h"
 #include "render_models.h"
 #include "parser.h"
 
@@ -18,44 +17,68 @@ int main(int args, char* argv[])
 	SDL_Window* win = SDL_CreateWindow("Viewer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 940, SDL_WINDOW_SHOWN);
 
 	SDL_Renderer* ren = SDL_CreateRenderer(win, -1, 0);
-	
-	bool run=true;
+
+	bool run = true;
 	SDL_Event event;
 
 	Model saya;
-	
+	Model sakura_leaf;
+
+	ReadToModel("3d_models/sakura_leaf",sakura_leaf,"sakura_leaf");
 	ReadToModel("3d_models/saya", saya, "saya");
-	
+
 	unsigned char scene = 0x00;
 	int width, height;
 
 	SDL_GetWindowSize(win, &width, &height);
-	
+
+	int dx=width/2, dy=height/2;
 	while (run)
 	{
 		while (SDL_PollEvent(&event))
 		{
 			if (event.type == SDL_QUIT)
 			{
-				run=false;
+				run = false;
 			}
 		}
-		
+
 		SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 		SDL_RenderClear(ren);
 		SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
-		
+
 		if (scene == 0x00)
 		{
+			dx -= 2;
+			dy -= 7;
+			if (dy <= -height / 2) { dx = width / 2; dy = height; }
 			//wall
-			triangle3(win,ren,width/2-10,200,0,width/2-10,-200,0,150,-200,2);
-			triangle3(win,ren,width/2-10,200,0,150,-200,2,150,200,2);
-				
-			render3(win,ren,saya,0x01,125,width/2+(width/100*20), 0, 1.3);
+			triangle3(win, ren, width / 2 - 10, 200, 0, width / 2 - 10, -200, 0, 150, -200, 2);
+			triangle3(win, ren, width / 2 - 10, 200, 0, 150, -200, 2, 150, 200, 2);
+
+			//saya
+			render3(win, ren, saya, Color{ 200,200,200 }, 0x01, 125, width / 2 + (width / 100 * 20), 0, 1.3);
+
+			//animated sakura leafs
+			{
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 10 + dy, dx * 17, dy * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dy, dx * 17 - 140 * 17, dy * 17 + 400 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 10 * 17, dy * 17 - 150 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dy, dx * 17 - 310 * 17, dy * 17 + 350 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 400 * 17, dy * 17 - 230 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dx, dx * 17 - 670 * 17, dy * 17 + 690 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dy, dx * 17 - 540 * 17, dy * 17 - 110 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dy, dx * 17 - 140 * 17, dy * 17 + 200 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 10 * 17, dy * 17 - 550 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dy, dx * 17 - 310 * 17, dy * 17 + 250 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 400 * 17, dy * 17 - 730 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dx, dx * 17 - 670 * 17, dy * 17 + 90 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 50 + dy, dx * 17 - 540 * 17, dy * 17 - 410 * 17, 17);
+			}
 		}
-		
+
 		SDL_RenderPresent(ren);
-		SDL_Delay(40);
+		SDL_Delay(20);
 	}
 	SDL_Quit();
 	SDL_DestroyWindow(win);
