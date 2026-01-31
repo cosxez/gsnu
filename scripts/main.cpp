@@ -63,15 +63,16 @@ int main(int args, char* argv[])
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 10 * 17, dy * 17 - 150 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dy, dx * 17 - 260 * 17, dy * 17 + 350 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 350 * 17, dy * 17 - 230 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dx, dx * 17 - 620 * 17, dy * 17 + 690 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dx, dx * 17 - 220 * 17, dy * 17 + 690 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dy, dx * 17 - 490 * 17, dy * 17 - 110 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dy, dx * 17 - 90 * 17, dy * 17 + 200 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 10 * 17, dy * 17 - 550 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 20 - dy, dx * 17 - 260 * 17, dy * 17 + 250 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 50 + dx, dx * 17 - 350 * 17, dy * 17 - 730 * 17, 17);
-				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dx, dx * 17 - 620 * 17, dy * 17 + 90 * 17, 17);
+				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dx, dx * 17 - 20 * 17, dy * 17 + 90 * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 50 + dy, dx * 17 - 490 * 17, dy * 17 - 410 * 17, 17);
 			}
+			SDL_SetRenderDrawColor(ren,200,200,200,255);
 		}
 
 		SDL_RenderPresent(ren);
