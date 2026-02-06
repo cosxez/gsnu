@@ -24,7 +24,9 @@ int main(int args, char* argv[])
 
 	Model menu;
 	Model sakura_leaf;
+	Model saya;
 
+	ReadToModel("3d_models/saya",saya,"saya");
 	ReadToModel("3d_models/sakura_leaf",sakura_leaf,"sakura_leaf");
 	ReadToModel("3d_models/menu", menu, "menu");
 
@@ -81,6 +83,12 @@ int main(int args, char* argv[])
 			start_button.constant = &scene;
 			start_button.endform = 0x01;
 			buttonUI(win, ren, event, start_button, -width / 100 * 20, height / 100 * 20, -width / 100 * 40, height / 100 * 30);
+		}
+
+		if (scene == 0x01)
+		{
+			dx++;
+			render3(win, ren, saya, Color{200,200,200},0x01,dx,0,0,2,3);
 		}
 
 		SDL_RenderPresent(ren);
