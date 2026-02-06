@@ -1,9 +1,3 @@
-#include <iostream>
-#include <SDL2/SDL.h>
-#include <cmath>
-
-using namespace std;
-
 struct Point
 {
 	float x, y, z;
@@ -34,7 +28,6 @@ struct Plane
 	float x2, y2, z2;
 };
 
-
 void point3(SDL_Window* window, SDL_Renderer* render, float x, float y, float z)
 {
 	int w, h;
@@ -42,9 +35,11 @@ void point3(SDL_Window* window, SDL_Renderer* render, float x, float y, float z)
 	if (x == 0) { x = 1; }
 	if (y == 0) { y = 1; }
 	if (z == 0) { z = 1; }
+
 	SDL_GetWindowSize(window, &w, &h);
 	
 	SDL_RenderDrawPoint(render, w / 2 + (x / z), h / 2 - (y / z));
+	
 }
 
 void vector3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float z1, float x2, float y2, float z2)
@@ -60,6 +55,7 @@ void vector3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float
 	SDL_GetWindowSize(window, &w, &h);
 
 	SDL_RenderDrawLine(render, w / 2 + (x1 / z1), h / 2 - (y1 / z1), w / 2 + (x2 / z2), h / 2 - (y2 / z2));
+	
 }
 
 void triangle3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float z1, float x2, float y2, float z2, float x3, float y3, float z3)
@@ -75,11 +71,13 @@ void triangle3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, flo
 	if (y1 == 0) { y1 = 1; }
 	if (y2 == 0) { y2 = 1; }
 	if (y3 == 0) { y3 = 1; }
+
 	SDL_GetWindowSize(window, &w, &h);
 
 	SDL_RenderDrawLine(render, w / 2 + (x1 / z1), h / 2 - (y1 / z1), w / 2 + (x2 / z2), h / 2 - (y2 / z2));
 	SDL_RenderDrawLine(render, w / 2 + (x1 / z1), h / 2 - (y1 / z1), w / 2 + (x3 / z3), h / 2 - (y3 / z3));
 	SDL_RenderDrawLine(render, w / 2 + (x2 / z2), h / 2 - (y2 / z2), w / 2 + (x3 / z3), h / 2 - (y3 / z3));
+	
 }
 
 void plane3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float z1, float x2, float y2, float z2)

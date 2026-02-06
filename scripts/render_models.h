@@ -1,9 +1,9 @@
 struct Model
 {
 	const char* name;
-	vector<Point> vertexes;
-	vector<Vector> vectors;
-	vector<Triangle> triangles;
+	std::vector<Point> vertexes;
+	std::vector<Vector> vectors;
+	std::vector<Triangle> triangles;
 };
 
 struct Color 

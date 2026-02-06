@@ -1,20 +1,20 @@
-void ReadToModel(string path, Model& model, const char* name)
+void ReadToModel(std::string path, Model& model, const char* name)
 {
-	ifstream file(path);
-	if (!file.is_open()) { cout << "File was not opened\n"; }
+	std::ifstream file(path);
+	if (!file.is_open()) { std::cout << "File was not opened\n"; }
 
 	model.name = name;
 	Vector vecC;
 	Point pointC;
 	Triangle trgC;
 
-	string line;
+	std::string line;
 	while (getline(file, line))
 	{
 		if (!line.empty())
 		{
 			line += ' ';
-			string ch;
+			std::string ch;
 			short cht = 0;
 			for (int i = 2; i < line.size(); i++)
 			{

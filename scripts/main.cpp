@@ -7,6 +7,7 @@
 #include "geometry.h"
 #include "render_models.h"
 #include "parser.h"
+#include "UI.h"
 
 using namespace std;
 
@@ -27,7 +28,7 @@ int main(int args, char* argv[])
 	ReadToModel("3d_models/sakura_leaf",sakura_leaf,"sakura_leaf");
 	ReadToModel("3d_models/menu", menu, "menu");
 
-	unsigned char scene = 0x00;
+	char scene = 0x00;
 	int width, height;
 
 	SDL_GetWindowSize(win, &width, &height);
@@ -73,6 +74,13 @@ int main(int args, char* argv[])
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 50 + dy, dx * 17 - 490 * 17, dy * 17 - 410 * 17, 17);
 			}
 			SDL_SetRenderDrawColor(ren,200,200,200,255);
+			
+			//UI
+			EventMouse start_button;
+			start_button.event = 1;
+			start_button.constant = &scene;
+			start_button.endform = 0x01;
+			buttonUI(win, ren, event, start_button, -width / 100 * 20, height / 100 * 20, -width / 100 * 40, height / 100 * 30);
 		}
 
 		SDL_RenderPresent(ren);
