@@ -4,6 +4,7 @@ struct Model
 	std::vector<Point> vertexes;
 	std::vector<Vector> vectors;
 	std::vector<Triangle> triangles;
+	std::vector<Bone> bones;
 };
 
 struct Color 
@@ -14,7 +15,7 @@ struct Color
 void render3(SDL_Window* win, SDL_Renderer* ren, Model model, Color color, char axis, float angle, float offset_x, float offset_y, float offset_z, int simplistic_step=1)
 {
 	float ygl = angle * (M_PI / 180);
-	
+	if (simplistic_step <= 0) { simplistic_step = 1; }
 	if (axis == 0x01)
 	{
 		for (int i = 0; i < model.vertexes.size(); i+=simplistic_step)

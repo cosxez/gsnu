@@ -57,7 +57,7 @@ int main(int args, char* argv[])
 			if (dy <= -height / 2) { dx = width / 2; dy = height; }
 			
 			//house and saya
-			render3(win,ren,menu,Color{160,150,150},0x01,125,width/2+(width/100*20),0,1);
+			render3(win, ren, menu, Color{160,150,150}, 0x01, 125, width / 2 + (width / 100 * 20), 0, 1);
 
 			//animated sakura leafs
 			{
@@ -88,7 +88,7 @@ int main(int args, char* argv[])
 		if (scene == 0x01)
 		{
 			dx++;
-			render3(win, ren, saya, Color{200,200,200},0x01,dx,0,0,2,3);
+			render3(win, ren, saya, Color{200,200,200},0x01,dx,0,0,1);
 		}
 
 		SDL_RenderPresent(ren);

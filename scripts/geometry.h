@@ -16,6 +16,13 @@ struct Triangle
 	float x3, y3, z3;
 };
 
+struct Bone 
+{
+	std::vector<Point> vertexes;
+	std::vector<Vector> vectors;
+	std::vector<Triangle> triangles;
+};
+
 struct Circle
 {
 	float x, y;

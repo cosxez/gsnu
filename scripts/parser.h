@@ -1,62 +1,56 @@
 void ReadToModel(std::string path, Model& model, const char* name)
 {
-	std::ifstream file(path);
+	std::ifstream file(path, std::ios::binary);
 	if (!file.is_open()) { std::cout << "File cannot be opened\n"; }
 
 	model.name = name;
 	Vector vecC;
 	Point pointC;
 	Triangle trgC;
+	Bone boneC;
 
-	std::string line;
-	while (getline(file, line))
+	uint32_t c;
+	while (file.read(reinterpret_cast<char*>(&c), sizeof(c)))
 	{
-		if (!line.empty())
+		if (c == 0xA1030)
 		{
-			line += ' ';
-			std::string ch;
-			short cht = 0;
-			for (int i = 2; i < line.size(); i++)
+			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()), std::ios::beg);
+			while (c == 0xA2040 || c == 0xA3050 || c == 0xA4060 || !file.eof())
 			{
-				if (line[i] == ' ')
-				{
-					float chi = stof(ch);
-					if (line[0] == 't')
-					{
-						if (cht == 0) { trgC.x1 = chi; }
-						if (cht == 1) { trgC.y1 = chi; }
-						if (cht == 2) { trgC.z1 = chi; }
-						if (cht == 3) { trgC.x2 = chi; }
-						if (cht == 4) { trgC.y2 = chi; }
-						if (cht == 5) { trgC.z2 = chi; }
-						if (cht == 6) { trgC.x3 = chi; }
-						if (cht == 7) { trgC.y3 = chi; }
-						if (cht == 8) { trgC.z3 = chi; model.triangles.push_back(trgC); }
-					}
-
-					if (line[0] == 'p')
-					{
-						if (cht == 0) { pointC.x = chi; }
-						if (cht == 1) { pointC.y = chi; }
-						if (cht == 2) { pointC.z = chi; model.vertexes.push_back(pointC); }
-					}
-
-					if (line[0] == 'v')
-					{
-						if (cht == 0) { vecC.x1 = chi; }
-						if (cht == 1) { vecC.y1 = chi; }
-						if (cht == 2) { vecC.z1 = chi; }
-						if (cht == 3) { vecC.x2 = chi; }
-						if (cht == 4) { vecC.y2 = chi; }
-						if (cht == 5) { vecC.z2 = chi; model.vectors.push_back(vecC); }
-					}
-
-					ch = "";
-					cht++;
-				}
-				else { ch += line[i]; }
+				file.read(reinterpret_cast<char*>(&c), sizeof(c));
+				file.read(reinterpret_cast<char*>(&pointC), 3 * sizeof(float));
+				model.vertexes.push_back(pointC);
 			}
-			cht = 0;
+		}
+		if (c == 0xA2040)
+		{
+			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()),std::ios::beg);
+			while (c == 0xA1030 || c == 0xA3050 || c == 0xA4060 || !file.eof())
+			{
+				file.read(reinterpret_cast<char*>(&c), sizeof(c));
+				file.read(reinterpret_cast<char*>(&vecC), 6 * sizeof(float));
+				model.vectors.push_back(vecC);
+			}
+		}
+		if (c == 0xA3050)
+		{
+			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()), std::ios::beg);
+			while (c == 0xA1030 || c == 0xA2040 || c==0xA4060 || !file.eof())
+			{
+				file.read(reinterpret_cast<char*>(&c), sizeof(c));
+				file.read(reinterpret_cast<char*>(&trgC), 9 * sizeof(float));
+				model.triangles.push_back(trgC);
+			}
+		}
+		if (c == 0xA4060)
+		{
+			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()), std::ios::beg);
+			while (c == 0xA1030 || c == 0xA2040 || c==0xA3050 || !file.eof())
+			{
+				file.read(reinterpret_cast<char*>(&c), sizeof(c));
+				file.read(reinterpret_cast<char*>(&boneC), 18 * sizeof(float));
+				model.bones.push_back(boneC);
+			}
 		}
 	}
 	file.close();
