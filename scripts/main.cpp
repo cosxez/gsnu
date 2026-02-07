@@ -79,7 +79,7 @@ int main(int args, char* argv[])
 			
 			//UI
 			EventMouse start_button;
-			start_button.event = 1;
+			start_button.event = SDL_BUTTON_LEFT;
 			start_button.constant = &scene;
 			start_button.endform = 0x01;
 			buttonUI(win, ren, event, start_button, -width / 100 * 20, height / 100 * 20, -width / 100 * 40, height / 100 * 30);
