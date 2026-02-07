@@ -15,19 +15,21 @@ void ReadToModel(std::string path, Model& model, const char* name)
 		if (c == 0xA1030)
 		{
 			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()), std::ios::beg);
-			while (c == 0xA2040 || c == 0xA3050 || c == 0xA4060 || !file.eof())
+			while (!file.eof())
 			{
 				file.read(reinterpret_cast<char*>(&c), sizeof(c));
+				if (c == 0xA2040 || c == 0xA3050 || c == 0xA4060) { break; }
 				file.read(reinterpret_cast<char*>(&pointC), 3 * sizeof(float));
 				model.vertexes.push_back(pointC);
 			}
 		}
 		if (c == 0xA2040)
 		{
-			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()),std::ios::beg);
-			while (c == 0xA1030 || c == 0xA3050 || c == 0xA4060 || !file.eof())
+			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()), std::ios::beg);
+			while (!file.eof())
 			{
 				file.read(reinterpret_cast<char*>(&c), sizeof(c));
+				if (c == 0xA1030 || c == 0xA3050 || c == 0xA4060) { break; }
 				file.read(reinterpret_cast<char*>(&vecC), 6 * sizeof(float));
 				model.vectors.push_back(vecC);
 			}
@@ -35,9 +37,10 @@ void ReadToModel(std::string path, Model& model, const char* name)
 		if (c == 0xA3050)
 		{
 			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()), std::ios::beg);
-			while (c == 0xA1030 || c == 0xA2040 || c==0xA4060 || !file.eof())
+			while (!file.eof())
 			{
 				file.read(reinterpret_cast<char*>(&c), sizeof(c));
+				if (c == 0xA2040 || c == 0xA1030 || c == 0xA4060) { break; }
 				file.read(reinterpret_cast<char*>(&trgC), 9 * sizeof(float));
 				model.triangles.push_back(trgC);
 			}
@@ -45,9 +48,10 @@ void ReadToModel(std::string path, Model& model, const char* name)
 		if (c == 0xA4060)
 		{
 			file.seekg(sizeof(uint32_t) + static_cast<size_t>(file.tellg()), std::ios::beg);
-			while (c == 0xA1030 || c == 0xA2040 || c==0xA3050 || !file.eof())
+			while (!file.eof())
 			{
 				file.read(reinterpret_cast<char*>(&c), sizeof(c));
+				if (c == 0xA2040 || c == 0xA3050 || c == 0xA1030) { break; }
 				file.read(reinterpret_cast<char*>(&boneC), 18 * sizeof(float));
 				model.bones.push_back(boneC);
 			}
