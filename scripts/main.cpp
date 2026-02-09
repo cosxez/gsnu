@@ -15,7 +15,7 @@ int main(int args, char* argv[])
 {
 	SDL_Init(SDL_INIT_VIDEO);
 
-	SDL_Window* win = SDL_CreateWindow("Viewer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 940, SDL_WINDOW_SHOWN);
+	SDL_Window* win = SDL_CreateWindow("GSNU", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 940, SDL_WINDOW_SHOWN);
 
 	SDL_Renderer* ren = SDL_CreateRenderer(win, -1, 0);
 
