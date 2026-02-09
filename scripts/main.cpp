@@ -48,7 +48,6 @@ int main(int args, char* argv[])
 
 		SDL_SetRenderDrawColor(ren, 0, 0, 0, 255);
 		SDL_RenderClear(ren);
-		SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
 
 		if (scene == 0x00)
 		{
@@ -83,8 +82,21 @@ int main(int args, char* argv[])
 			start_button.constant = &scene;
 			start_button.endform = 0x01;
 			buttonUI(win, ren, event, start_button, -width / 100 * 20, height / 100 * 20, -width / 100 * 40, height / 100 * 30);
+			if (scene==0x01) 
+			{
+				uint8_t r=160,c=150;
+				SDL_SetRenderDrawColor(ren,0,0,0,255);
+				while (c!=0)
+				{
+					render3(win,ren,menu,Color{r,c,c},0x01,125,width/2+(width/100*20),0,1);
+					r--;
+					c--;
+					SDL_RenderPresent(ren);
+					SDL_Delay(5);
+				}
+			}
 		}
-
+		
 		if (scene == 0x01)
 		{
 			dx++;
