@@ -85,7 +85,6 @@ int main(int args, char* argv[])
 			if (scene==0x01) 
 			{
 				uint8_t r=160,c=150;
-				SDL_SetRenderDrawColor(ren,0,0,0,255);
 				while (c!=0)
 				{
 					render3(win,ren,menu,Color{r,c,c},0x01,125,width/2+(width/100*20),0,1);
