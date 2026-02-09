@@ -58,7 +58,7 @@ int main(int args, char* argv[])
 			//house and saya
 			render3(win, ren, menu, Color{160,150,150}, 0x01, 125, width / 2 + (width / 100 * 20), 0, 1);
 
-			//animated sakura leafs
+			//animated sakura leaves
 			{
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x02, 10 + dy, dx * 17, dy * 17, 17);
 				render3(win, ren, sakura_leaf, Color{ 200,100,150 }, 0x01, 20 - dy, dx * 17 - 90 * 17, dy * 17 + 400 * 17, 17);
