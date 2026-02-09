@@ -26,9 +26,9 @@ int main(int args, char* argv[])
 	Model sakura_leaf;
 	Model saya;
 
-	ReadToModel("3d_models/saya",saya,"saya");
-	ReadToModel("3d_models/sakura_leaf",sakura_leaf,"sakura_leaf");
-	ReadToModel("3d_models/menu", menu, "menu");
+	ReadToModel("3d_models/saya.jsfm",saya,"saya");
+	ReadToModel("3d_models/sakura_leaf.jsfm",sakura_leaf,"sakura_leaf");
+	ReadToModel("3d_models/menu.jsfm", menu, "menu");
 
 	char scene = 0x00;
 	int width, height;
@@ -88,7 +88,7 @@ int main(int args, char* argv[])
 		if (scene == 0x01)
 		{
 			dx++;
-			render3(win, ren, saya, Color{200,200,200},0x01,dx,0,0,1);
+			render3(win, ren, saya, Color{200,200,200},0x01,dx,0,0,1,3);
 		}
 
 		SDL_RenderPresent(ren);
