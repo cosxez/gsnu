@@ -96,6 +96,7 @@ int main(int args, char* argv[])
 				uint8_t c=150;
 				while (c>0)
 				{
+					SDL_PollEvent(&event);
 					render3(win,ren,menu,Color{c,c,c},0x01,125,width/2+(width/100*20),0,1);
 					c--;
 					SDL_RenderPresent(ren);
