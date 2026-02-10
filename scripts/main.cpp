@@ -25,7 +25,9 @@ int main(int args, char* argv[])
 	Model menu;
 	Model sakura_leaf;
 	Model saya;
+	Model s1;
 
+	ReadToModel("3d_models/s1.jsfm",s1,"scene1");
 	ReadToModel("3d_models/saya.jsfm",saya,"saya");
 	ReadToModel("3d_models/sakura_leaf.jsfm",sakura_leaf,"sakura_leaf");
 	ReadToModel("3d_models/menu.jsfm", menu, "menu");
@@ -107,8 +109,7 @@ int main(int args, char* argv[])
 		
 		if (scene == 0x01)
 		{
-			dx++;
-			render3(win, ren, saya, Color{200,200,200},0x01,dx,0,0,1,3);
+			render3(win, ren, s1, {170,30,50},0x01,-30,-200*3,100*3,3);
 		}
 
 		SDL_RenderPresent(ren);
