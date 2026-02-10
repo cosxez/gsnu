@@ -14,12 +14,12 @@ using namespace std;
 int main(int args, char* argv[])
 {
 	SDL_Init(SDL_INIT_VIDEO);
-
+	
 	SDL_Window* win = SDL_CreateWindow("GSNU", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 940, SDL_WINDOW_SHOWN);
 
 	SDL_Renderer* ren = SDL_CreateRenderer(win, -1, 0);
 
-	bool run = true;
+	char run = true;
 	SDL_Event event;
 
 	Model menu;
@@ -78,10 +78,19 @@ int main(int args, char* argv[])
 			
 			//UI
 			EventMouse start_button;
+			EventMouse exit_button;
+			
 			start_button.event = SDL_BUTTON_LEFT;
 			start_button.constant = &scene;
 			start_button.endform = 0x01;
-			buttonUI(win, ren, event, start_button, -width / 100 * 20, height / 100 * 20, -width / 100 * 40, height / 100 * 30);
+
+			exit_button.event=SDL_BUTTON_LEFT;
+			exit_button.constant=&run;
+			exit_button.endform = false;
+			
+			buttonUI(ren, event, start_button, width / 100 * 20, height / 100 * 20, width / 100 * 40, height / 100 * 30);
+			buttonUI(ren,event,exit_button, width/100*40,height/100*70,width/100*60,height/100*80);
+			
 			if (scene==0x01) 
 			{
 				uint8_t r=160,c=150;
