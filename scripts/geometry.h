@@ -48,6 +48,14 @@ void point3(SDL_Window* window, SDL_Renderer* render, float x, float y, float z)
 	SDL_RenderDrawPoint(render, w / 2 + (x / z), h / 2 - (y / z));
 }
 
+void vector2(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float x2, float y2)
+{
+	int w,h;
+	SDL_GetWindowSize(window,&w,&h);
+	
+	SDL_RenderDrawLine(render,w/2+x1,h/2-y1,w/2+x2,h/2-y2);
+}
+
 void vector3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float z1, float x2, float y2, float z2)
 {
 	int w, h;

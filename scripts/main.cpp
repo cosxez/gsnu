@@ -8,6 +8,7 @@
 #include "render_models.h"
 #include "parser.h"
 #include "UI.h"
+#include "font.h"
 
 using namespace std;
 
@@ -93,7 +94,9 @@ int main(int args, char* argv[])
 			buttonUI(ren, event, start_button, width / 100 * 20, height / 100 * 20, width / 100 * 40, height / 100 * 30);
 			buttonUI(ren,event,exit_button, width/100*40,height/100*70,width/100*60,height/100*80);
 			
-			if (scene==0x01) 
+			DrawText(win,ren,"fonts/base.fbf",8,"A",-200,250);
+
+			if (scene==0x01)
 			{
 				uint8_t c=150;
 				while (c>0)
