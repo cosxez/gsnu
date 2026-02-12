@@ -94,7 +94,8 @@ int main(int args, char* argv[])
 			buttonUI(ren, event, start_button, width / 100 * 20, height / 100 * 20, width / 100 * 40, height / 100 * 30);
 			buttonUI(ren,event,exit_button, width/100*40,height/100*70,width/100*60,height/100*80);
 			
-			DrawText(win,ren,"fonts/base.fbf",6,"start",-250,250);
+			DrawText(win,ren,"fonts/base.fbf",6,"start",-width/100*26,height/100*27);
+			DrawText(win,ren,"fonts/base.fbf",6,"exit",-width/100*4.5,-height/100*23);
 
 			if (scene==0x01)
 			{
