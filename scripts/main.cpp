@@ -113,7 +113,11 @@ int main(int args, char* argv[])
 		
 		if (scene == 0x01)
 		{
-			render3(win, ren, s1, {170,30,50},0x01,-30,-200*3,100*3,3);
+			render3(win, ren, s1, {170/2,30/2,50/2},0x01,-30,-200*3,100*3,3);
+			SDL_SetRenderDrawColor(ren,200,200,200,255);
+			plane2(win,ren,-width/100*40,height/100*40,width/100*40,-height/100*40);
+			DrawText(win,ren,"fonts/base.fbf",3.5,"\"url\", - muttered the writhing mountain of flesh, - \"vayp yvchs",-width/100*36,height/100*36);
+			DrawText(win,ren,"fonts/base.fbf",3.5,"iia fyfsm uek yf ai?\"",-width/100*36,height/100*34);
 		}
 
 		SDL_RenderPresent(ren);

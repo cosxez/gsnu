@@ -92,22 +92,20 @@ void triangle3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, flo
 	SDL_RenderDrawLine(render, w / 2 + (x2 / z2), h / 2 - (y2 / z2), w / 2 + (x3 / z3), h / 2 - (y3 / z3));
 }
 
-void plane3(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float z1, float x2, float y2, float z2)
+void plane2(SDL_Window* window, SDL_Renderer* render, float x1, float y1, float x2, float y2)
 {
 	int w, h;
 
-	if (z1 == 0) { z1 = 1; }
-	if (z2 == 0) { z2 = 1; }
 	if (x1 == 0) { x1 = 1; }
 	if (x2 == 0) { x2 = 1; }
 	if (y1 == 0) { y1 = 1; }
 	if (y2 == 0) { y2 = 1; }
 	SDL_GetWindowSize(window, &w, &h);
 
-	SDL_RenderDrawLine(render, w / 2 + (x1 / z1), h / 2 - (y1 / z1), w / 2 + (x2 / z2), h / 2 - (y1 / z1));
-	SDL_RenderDrawLine(render, w / 2 + (x1 / z1), h / 2 - (y1 / z1), w / 2 + (x1 / z1), h / 2 - (y2 / z2));
-	SDL_RenderDrawLine(render, w / 2 + (x1 / z1), h / 2 - (y2 / z2), w / 2 + (x2 / z2), h / 2 - (y2 / z2));
-	SDL_RenderDrawLine(render, w / 2 + (x2 / z2), h / 2 - (y2 / z2), w / 2 + (x2 / z2), h / 2 - (y1 / z1));
+	SDL_RenderDrawLine(render, w / 2 + x1, h / 2 - y1, w / 2 + x2, h / 2 - y1);
+	SDL_RenderDrawLine(render, w / 2 + x1, h / 2 - y1, w / 2 + x1, h / 2 - y2);
+	SDL_RenderDrawLine(render, w / 2 + x1, h / 2 - y2, w / 2 + x2, h / 2 - y2);
+	SDL_RenderDrawLine(render, w / 2 + x2, h / 2 - y2, w / 2 + x2, h / 2 - y1);
 }
 
 void circle2(SDL_Window* window, SDL_Renderer* render, float x, float y, float r)
